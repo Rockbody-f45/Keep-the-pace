@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  --font-app: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable",
+    Pretendard, "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+  --color-ink: #101112;
+  --color-ink-soft: #4b4d52;
+  --color-paper: #faf9f6;
+  --color-paper-raised: #ffffff;
+  --color-line: #e7e5e0;
+  --color-accent: #ff3d1f;
+  --color-accent-dark: #d92c10;
+  --color-accent-soft: #ffe4dc;
+  --color-success: #16a34a;
+  --color-success-soft: #dcfce7;
+  --color-stamp-empty: #d9d7d2;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-paper: var(--color-paper);
+  --color-paper-raised: var(--color-paper-raised);
+  --color-line: var(--color-line);
+  --color-accent: var(--color-accent);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-success: var(--color-success);
+  --color-success-soft: var(--color-success-soft);
+  --color-stamp-empty: var(--color-stamp-empty);
+  --font-sans: var(--font-app);
+  --font-display: var(--font-app);
+}
+
+html {
+  background: var(--color-paper);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-app);
+}
+
+@layer utilities {
+  .container-app {
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container-admin {
+    max-width: 76rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card {
+    background: var(--color-paper-raised);
+    border: 1px solid var(--color-line);
+    border-radius: 1.25rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.15s ease;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: #000;
+  }
+
+  .btn-accent {
+    background: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 10px 24px -8px rgb(255 61 31 / 0.55);
+  }
+
+  .btn-accent:hover {
+    background: var(--color-accent-dark);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-ink);
+    border: 1.5px solid var(--color-line);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--color-ink);
+  }
+
+  .btn:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  .input-field {
+    width: 100%;
+    border-radius: 0.9rem;
+    border: 1.5px solid var(--color-line);
+    background: var(--color-paper-raised);
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .input-field:focus {
+    border-color: var(--color-ink);
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .stamp {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    font-weight: 900;
+  }
+
+  .stamp-empty {
+    border: 2px dashed var(--color-stamp-empty);
+    color: var(--color-stamp-empty);
+  }
+
+  .stamp-done {
+    background: var(--color-accent);
+    color: #fff;
+    border: 2px solid var(--color-accent-dark);
+    box-shadow: 0 6px 14px -4px rgb(255 61 31 / 0.6);
+    transform: rotate(-6deg);
+  }
+
+  .stamp-today-pending {
+    border: 2px solid var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  .badge-success {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--color-success-soft);
+    color: var(--color-success);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .badge-fail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #f1f0ec;
+    color: var(--color-ink-soft);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 999px;
+  }
+}
