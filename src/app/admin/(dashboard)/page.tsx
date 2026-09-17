@@ -76,7 +76,10 @@ export default async function AdminDashboardPage() {
           </p>
         </div>
 
-        <div className="card p-6 flex flex-col items-center justify-center text-center bg-[var(--color-ink)]">
+        <div
+          className="card p-6 flex flex-col items-center justify-center text-center"
+          style={{ background: "var(--color-ink)" }}
+        >
           <p className="text-xs font-bold tracking-[0.2em] text-white/60">CURRENT CODE</p>
           <p className="mt-3 text-6xl font-black tracking-[0.15em] text-white tabular-nums">
             {code ?? "----"}
