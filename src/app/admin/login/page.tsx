@@ -19,11 +19,14 @@ export default function AdminLoginPage() {
       const supabase = createSupabaseBrowserClient();
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
-        setError("로그인에 실패했습니다. 이메일/비밀번호를 확인해주세요.");
+        // 디버깅을 위해 Supabase가 보낸 실제 에러 메시지를 그대로 보여줍니다.
+        setError(`로그인 실패: ${error.message} (status: ${error.status ?? "-"})`);
         return;
       }
       router.push("/admin");
       router.refresh();
+    } catch (err) {
+      setError(`예상치 못한 오류: ${err instanceof Error ? err.message : String(err)}`);
     } finally {
       setLoading(false);
     }
