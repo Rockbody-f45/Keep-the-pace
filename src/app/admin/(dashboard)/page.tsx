@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getMembersWithCurrentWeek } from "@/lib/adminData";
-import { getTodayCode, todayDateStringKST } from "@/lib/dailyCode";
+import { getCurrentCode, todayDateStringKST, nextCodeChangeLabelKST } from "@/lib/dailyCode";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +18,8 @@ export default async function AdminDashboardPage() {
   const weekSuccessRate = participants > 0 ? Math.round((weekSuccessCount / participants) * 1000) / 10 : 0;
 
   const eventActive = today >= event.start_date && today <= event.end_date;
-  const code = eventActive ? getTodayCode() : null;
+  const code = eventActive ? getCurrentCode() : null;
+  const nextChange = nextCodeChangeLabelKST();
 
   return (
     <div className="space-y-8">
@@ -76,11 +77,13 @@ export default async function AdminDashboardPage() {
         </div>
 
         <div className="card p-6 flex flex-col items-center justify-center text-center bg-[var(--color-ink)]">
-          <p className="text-xs font-bold tracking-[0.2em] text-white/60">TODAY&apos;S CODE</p>
+          <p className="text-xs font-bold tracking-[0.2em] text-white/60">CURRENT CODE</p>
           <p className="mt-3 text-6xl font-black tracking-[0.15em] text-white tabular-nums">
             {code ?? "----"}
           </p>
-          <p className="mt-3 text-xs font-semibold text-white/60">{today} · 스튜디오 TV/데스크에 표시하세요</p>
+          <p className="mt-3 text-xs font-semibold text-white/60">
+            {today} · {nextChange}에 다음 코드로 자동 변경
+          </p>
           <Link
             href="/admin/today-code"
             className="mt-4 text-xs font-bold text-white underline underline-offset-4"

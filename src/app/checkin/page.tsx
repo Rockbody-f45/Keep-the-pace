@@ -107,7 +107,7 @@ export default function CheckinPage() {
             <p className="text-lg font-black leading-snug">
               스튜디오 TV/데스크에 표시된
               <br />
-              오늘의 4자리 코드를 입력하세요
+              지금 코드 4자리를 입력하세요
             </p>
             <input
               className="input-field text-center text-4xl tracking-[0.4em] font-black h-20"

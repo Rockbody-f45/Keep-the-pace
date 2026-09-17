@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/requireAdmin";
 import { getMembersWithCurrentWeek } from "@/lib/adminData";
-import { getTodayCode, todayDateStringKST } from "@/lib/dailyCode";
+import { getCurrentCode, todayDateStringKST } from "@/lib/dailyCode";
 
 /** weekDays()의 월~토(0~5) 순서에서 오늘이 몇 번째 인덱스인지. 일요일이면 -1 */
 function todayWeekdayIndex(todayStr: string): number {
@@ -37,7 +37,7 @@ export async function GET() {
     weekSuccessRate,
     successList,
     weeklyGoal: event.weekly_goal,
-    todayCode: getTodayCode(),
+    todayCode: getCurrentCode(),
     today,
     event: {
       name: event.name,

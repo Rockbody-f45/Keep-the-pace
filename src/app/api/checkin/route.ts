@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { getTodayCode, todayDateStringKST } from "@/lib/dailyCode";
+import { getCurrentCode, todayDateStringKST } from "@/lib/dailyCode";
 import { getActiveEvent } from "@/lib/getEvent";
 
 export async function POST(req: NextRequest) {
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   }
   if (!/^\d{4}$/.test(code)) {
     return NextResponse.json(
-      { status: "invalid_code", message: "오늘의 출석 코드 4자리를 입력해주세요." },
+      { status: "invalid_code", message: "지금 출석 코드 4자리를 입력해주세요." },
       { status: 400 }
     );
   }
@@ -42,10 +42,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const correctCode = getTodayCode();
+  const correctCode = getCurrentCode();
   if (code !== correctCode) {
     return NextResponse.json(
-      { status: "invalid_code", message: "출석 코드가 올바르지 않습니다. 스튜디오에 표시된 오늘의 코드를 확인해주세요." },
+      { status: "invalid_code", message: "출석 코드가 올바르지 않습니다. 스튜디오에 표시된 지금 코드를 확인해주세요." },
       { status: 400 }
     );
   }
